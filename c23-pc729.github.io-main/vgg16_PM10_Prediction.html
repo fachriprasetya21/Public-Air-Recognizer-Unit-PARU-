@@ -1,6 +1,10 @@
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+        <link rel="stylesheet" href="style_vgg16.css">
+        <title>PM10 PREDICTION</title>
     </head>
     <script>
         var saveButton, clearButton;
@@ -47,20 +51,31 @@
         document.addEventListener("DOMContentLoaded", run);
     </script>
     <body>
-        <h1>PM10 Prediction! (using pre-defined model)</h1>
-        <h2 style="margin-bottom: 0px;">Get some example files <a href="https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal?select=Air+Pollution+Image+Dataset" target="_blank">here</a>.</h2>
-        <input type="file" id="finput" accept="image/jpeg, image/png, image/jpg" style="position:absolute;top:210;left:50;width:280;height:280;">
-        <input type="button" value="classify" id="sb" size="48" style="position:absolute;top:560;left:50;">
-        <input type="button" value="clear" id="cb" size="23" style="position:absolute;top:560;left:130;">
-        <img id="canvasimg" style="position:absolute;top:260;left:50;width:224;height:224;">
-        <p style="margin-top: 0px; margin-bottom: 0px;">You can find the pre-defined model <a href="https://github.com/C23-PC729/c23-pc729.github.io/tree/main/model" target="_blank">here</a>.<br></p>
-        <p id="status" style="margin-top: 8px; margin-bottom: 0px;"></p>
-        <div id="output" style="font-family:courier;font-size:16px;"></div>
-        <h3 id="caution" style="color: red;">Wait until an alert appear!</h3>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-        <p>
-            Click <a href="simplePrediction.html">here</a> to try float prediction with training!
-        </p>
+        <div class="card">
+            <div class="box">
+                <h1>PM10 Prediction! (using pre-defined model)</h1>
+                <h2 style="margin-bottom: 0px;">Get some example files <a href="https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal?select=Air+Pollution+Image+Dataset" target="_blank">here</a>.</h2>
+                <p style="margin-top: 0px; margin-bottom: 0px;">You can find the pre-defined model <a href="https://github.com/C23-PC729/c23-pc729.github.io/tree/main/model" target="_blank">here</a>.<br></p>
+            </div>
+            <div class="text">
+                <h3 id="caution" style="color: red;">Wait until an alert appear!</h3>
+            </div>
+            <div class="card-container">
+                <img id="canvasimg" >
+                <input type="file" id="finput" accept="image/jpeg, image/png, image/jpg" >
+                <input type="button" value="classify" id="sb" >
+                <input type="button" value="clear" id="cb" >
+            </div>
+            <div class="card-container">
+                <p id="status" ></p>
+                <p id="output"></p>
+            </div>
+                
+            
+        </div>
+        <div class="container">
+            <h1>Here are another example</h1>
+            <p>Click <a href="simplePrediction.html">here</a> to try float prediction with training!</p>
+        </div>
     </body>
 </html>
