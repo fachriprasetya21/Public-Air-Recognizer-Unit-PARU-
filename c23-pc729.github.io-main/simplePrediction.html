@@ -1,0 +1,62 @@
+<html>
+    <head></head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script lang="js">
+
+        async function doTraining(model){
+            const history = 
+                await   model.fit(xs, ys,
+                        {   epochs: 500,
+                            callbacks: {
+                                onEpochEnd: async(epoch, logs) =>{
+                                    console.log("Epoch:" + epoch + " Loss:" + logs.loss);
+                                }
+                            }
+                        });
+        }
+
+        function myFunction() {
+            const x = parseFloat(document.getElementById("myNumber").value);
+            document.getElementById("status").innerHTML = "Start Predicting...";
+            doTraining(model).then(() => {
+                const testVal = tf.tensor2d([x], [1, 1]);
+                const predVal = model.predict(testVal)
+                document.getElementById("status").innerHTML = "Result:";
+                document.getElementById("result").innerHTML = predVal;
+                var pIndex = predVal.dataSync()[0];
+                alert(pIndex);
+            });
+        }
+
+        const model = tf.sequential();
+        model.add(tf.layers.dense({units: 1, inputShape: [1]}));
+        model.compile({loss:'meanSquaredError',
+                       optimizer:'sgd'});
+        model.summary();
+
+        const xs = tf.tensor2d([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], [6, 1]);
+        const ys = tf.tensor2d([-3.0, -1.0, 2.0, 3.0, 5.0, 7.0], [6, 1]);
+
+    </script>
+    <body>
+        <h1>Float Prediction!</h1>
+        <h2>Predict Number of 2x-1 Formula</h2>
+        <br><br>
+        
+        <p>
+            Change the number of the text field, 
+            and then click the button below. 
+        </p>
+        Number for x:<input type="number" id="myNumber" placeholder=" i/e. 10  or  10.5 ">
+        <button type="button" onclick="myFunction()">Go predict the 2x-1 value!</button>
+        <br><br>
+        
+        <p id="status"></p>
+        <p id="result"></p>
+        <br><br>
+
+        <p>
+            Click <a href="simpleMNIST.html">here</a> to try number classifier with training!
+        </p>
+    </body>
+</html>

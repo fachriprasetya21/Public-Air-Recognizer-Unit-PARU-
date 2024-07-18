@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    </head>
+    <script>
+        var saveButton, clearButton;
+        var rawImage;
+        var model;
+        var imageArray = [];
+        var prediction;
+
+        function displayImages(imgArr) {
+            const url = URL.createObjectURL(imgArr);
+            rawImage.src = url;
+        }
+
+        function erase() {
+            rawImage.src = "#";
+        }
+
+        async function save() {
+            document.getElementById("status").innerHTML = "Start Predicting...";
+            prediction = await model.predict(tf.browser.fromPixels(rawImage).cast('int32').expandDims());
+            document.getElementById("status").innerHTML = "Prediction result:";
+            document.getElementById("output").innerHTML = "PM10: " + prediction.dataSync()[0];
+        }
+
+        async function run() {
+            const MODEL_URL = 'model/model.json';
+            model = await tf.loadLayersModel(MODEL_URL);
+            console.log(model.summary());
+            document.getElementById("caution").style = "color: white;";
+            alert("Ready to Classify!");
+            const input = document.getElementById("finput");
+            rawImage = document.getElementById('canvasimg');
+            saveButton = document.getElementById('sb');
+            saveButton.addEventListener("click", save);
+            clearButton = document.getElementById('cb');
+            clearButton.addEventListener("click", erase);
+            input.addEventListener("change", () => {
+                const file = input.files;
+                imageArray = file[0];
+                displayImages(imageArray);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", run);
+    </script>
+    <body>
+        <h1>PM10 Prediction! (using pre-defined model)</h1>
+        <h2 style="margin-bottom: 0px;">Get some example files <a href="https://www.kaggle.com/datasets/adarshrouniyar/air-pollution-image-dataset-from-india-and-nepal?select=Air+Pollution+Image+Dataset" target="_blank">here</a>.</h2>
+        <input type="file" id="finput" accept="image/jpeg, image/png, image/jpg" style="position:absolute;top:210;left:50;width:280;height:280;">
+        <input type="button" value="classify" id="sb" size="48" style="position:absolute;top:560;left:50;">
+        <input type="button" value="clear" id="cb" size="23" style="position:absolute;top:560;left:130;">
+        <img id="canvasimg" style="position:absolute;top:260;left:50;width:224;height:224;">
+        <p style="margin-top: 0px; margin-bottom: 0px;">You can find the pre-defined model <a href="https://github.com/C23-PC729/c23-pc729.github.io/tree/main/model" target="_blank">here</a>.<br></p>
+        <p id="status" style="margin-top: 8px; margin-bottom: 0px;"></p>
+        <div id="output" style="font-family:courier;font-size:16px;"></div>
+        <h3 id="caution" style="color: red;">Wait until an alert appear!</h3>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <p>
+            Click <a href="simplePrediction.html">here</a> to try float prediction with training!
+        </p>
+    </body>
+</html>

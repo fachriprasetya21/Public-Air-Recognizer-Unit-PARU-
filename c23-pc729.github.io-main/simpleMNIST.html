@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+
+</head>
+<body>
+    <h1>Handwritten Number Classifier!</h1>
+    <h2>This page was modified to accept image input, instead of handwriting. Get some image files to classify <a href="https://github.com/C23-PC729/c23-pc729.github.io/tree/main/sample" target="_blank">here</a>.</h2>
+    <h3 id="caution" style="color: red;">Wait until the training is done and an alert appear! It may takes up to 5 minutes.</h3>
+    <input style="position:absolute;top:210;left:50;width:280;height:280;" type="file" id="finput" accept="image/jpeg, image/png, image/jpg">
+    <img id="canvasimg" style="position:absolute;top:260;left:50;width:280;height:280;">
+    <input type="button" value="classify" id="sb" size="48" style="position:absolute;top:560;left:50;">
+    <input type="button" value="clear" id="cb" size="23" style="position:absolute;top:560;left:130;">
+    <script src="data.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+    <p id="status" style="margin-top: -40px;"></p>
+    <p id="result"></p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <p>
+        Click <a href="index.html">here</a> to back to index.html!
+    </p>
+</body>
+</html>
