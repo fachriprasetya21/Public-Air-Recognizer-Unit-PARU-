@@ -1,0 +1,146 @@
+/* styles_vgg16.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #3361dd;
+}
+
+.card {
+    display: flex;  
+    align-items: center;  /* Memposisikan konten di atas secara vertikal */
+    height: 100vh;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.box {
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px #0000001a;
+    text-align: center;
+    margin: 10px;
+}
+
+.box h1 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.box h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.box p {
+    margin: 10px 0;
+}
+
+.box a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.box a:hover {
+    text-decoration: underline;
+}
+
+input[type="file"] {
+    margin: center;
+}
+input[type="button"] {
+    display: block;
+    width: 80%;
+    max-width: 280px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    font-size: 16px;
+    background: rgba(121, 121, 121, 0.425);
+    cursor: pointer;
+}
+
+
+.card-container {
+    max-width: 600px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 48%; /* Lebar 48% untuk memberikan sedikit ruang di antara container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*
+.hasil-prediksi {
+    
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px #0000001a;
+    text-align: center;
+    margin-right: 10px auto;
+}*/
+.card-container #canvasimg {
+    position:relative;
+    margin: 10px 0;
+    align-items: center;
+    max-width: 280px;
+    margin: 0 0 10px;
+}
+.card-container #status,
+.card-container #output {
+    text-align: center;
+    margin: 10px 0;
+    color: #000000;
+    position:relative;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .card, .container {
+        padding: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    
+    .box h1 {
+        font-size: 28px;
+
+    .box h2 {
+        font-size: 22px;
+    }
+
+    .card-container p,
+    .card-container #status,
+    .card-container #output {
+        font-size: 18px;
+    
+    }
+}
+}
